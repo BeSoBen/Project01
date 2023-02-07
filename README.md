@@ -15,52 +15,69 @@ Mr. Robot:1 VulnHub
 Tools/Commands used:
 
 nmap
-	version 7.93
-  Nmap is a network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing     the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection
+version 7.93
+Nmap is a network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing     the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection
+
 nikto
-	version 2.1.6
-	Nikto is a free software command-line vulnerability scanner that scans webservers for dangerous files/CGIs, outdated server software and other           problems. It performs generic and server type specific checks. It also captures and prints any cookies received
+version 2.1.6
+Nikto is a free software command-line vulnerability scanner that scans webservers for dangerous files/CGIs, outdated server software and other           problems. It performs generic and server type specific checks. It also captures and prints any cookies received
+
 gobuster
-	Gobuster is a tool used to brute-force:  URIs (directories and files) in web sites,  DNS subdomains (with wildcard support), Virtual Host names on       target web servers, Open Amazon S3 buckets, Open Google Cloud buckets, TFTP servers..
+Gobuster is a tool used to brute-force:  URIs (directories and files) in web sites,  DNS subdomains (with wildcard support), Virtual Host names on       target web servers, Open Amazon S3 buckets, Open Google Cloud buckets, TFTP servers..
+
 dirbuster
-	version OWASP DirBuster 1.0-RC1
-	DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers. Often is the case now     of what looks like a web server in a state of default installation is actually not, and has pages and applications hidden within. DirBuster attempts     to find these.
+version OWASP DirBuster 1.0-RC1
+DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers. Often is the case now     of what looks like a web server in a state of default installation is actually not, and has pages and applications hidden within. DirBuster attempts     to find these.
+
 wpscan
-	version 3.8.22
-	The WPScan CLI tool is a free, for non-commercial use, black box WordPress security scanner written for security professionals and blog maintainers to   test the security of their sites. The WPScan CLI tool uses a database of 38,431 WordPress vulnerabilities.
+version 3.8.22
+The WPScan CLI tool is a free, for non-commercial use, black box WordPress security scanner written for security professionals and blog maintainers to   test the security of their sites. The WPScan CLI tool uses a database of 38,431 WordPress vulnerabilities.
+
 metasploit
-	version 6.2.36
-	The Metasploit Project is a computer security project that provides information about security vulnerabilities and aids in penetration testing and IDS   signature development. It is owned by Boston, Massachusetts-based security company Rapid7
+version 6.2.36
+The Metasploit Project is a computer security project that provides information about security vulnerabilities and aids in penetration testing and IDS   signature development. It is owned by Boston, Massachusetts-based security company Rapid7
+
 burpsuite
-	version 2022.12.5
-	Burp Suite is **an integrated platform and graphical tool for performing security testing of web applications**, it supports the entire testing         process, from initial mapping and analysis of an application's attack surface, through to finding and exploiting security vulnerabilities.
+version 2022.12.5
+Burp Suite is an integrated platform and graphical tool for performing security testing of web applications, it supports the entire testing         process, from initial mapping and analysis of an application's attack surface, through to finding and exploiting security vulnerabilities.
+
 hydra
-	version 9.4
-	Hydra is a pre-installed tool in Kali Linux used to brute-force usernames and passwords to different services such as FTP, ssh, telnet, MS SQL,         etc. Brute force can be used to try different usernames and passwords against a target to identify the correct credentials.
+version 9.4
+Hydra is a pre-installed tool in Kali Linux used to brute-force usernames and passwords to different services such as FTP, ssh, telnet, MS SQL,         etc. Brute force can be used to try different usernames and passwords against a target to identify the correct credentials.
+
 net cat
-	version 1.10-47
-	The Netcat ( nc ) command is a command-line utility for reading and writing data between two computer networks The communication happens using           either TCP or UDP. The command differs depending on the system ( netcat , nc , ncat , and others).
+version 1.10-47
+The Netcat ( nc ) command is a command-line utility for reading and writing data between two computer networks The communication happens using           either TCP or UDP. The command differs depending on the system ( netcat , nc , ncat , and others).
 	
+
 Walk through:
 
 Footprinting and enumeration:
 
 whoami
 	notes user
+
 ip address 
 	notes system ip
+
 sudo -i
 	super user/ root interactive
+
 nmap -O [ipadress/range]
 	scans range of ip addresses and lists operating system 
+
 arping -h [ipaddress/range]
 	this pings the arp network to map local network
+
 nikto -h [target-ipaddress]
 	vulnerbility scanner, set host [ip]
+
 gobuster dir -u [target-url/ipaddress] -w [/usr/share/wordlist/dirbuster/directory-list.2.3-small.txt]
-	dictionary attack, against url searching for hidden directories
+dictionary attack, against url searching for hidden directories
+
 DirBuster application w report generation
-	target url, wordlist, don't be recursive (unneeded in this), File extension "php, txt"
+target url, wordlist, don't be recursive (unneeded in this), File extension "php, txt"
+
 Physically explored the website, url input, triggered 404, accessed wp-login, robots.
 
 FIRST FLAG FOUND, [target-ipaddress/robots] > [target0ipaddress/flag-1-of-3.txt] and [target-ipaddress/fsocity.dic]
