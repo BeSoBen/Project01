@@ -42,20 +42,20 @@ wpscan - version 3.8.22
 
 The WPScan CLI tool is a free, for non-commercial use, black box WordPress security scanner written for security professionals and blog maintainers to   test the security of their sites. The WPScan CLI tool uses a database of 38,431 WordPress vulnerabilities.
 
-metasploit
-version 6.2.36
+metasploit - version 6.2.36
+
 The Metasploit Project is a computer security project that provides information about security vulnerabilities and aids in penetration testing and IDS   signature development. It is owned by Boston, Massachusetts-based security company Rapid7
 
-burpsuite
-version 2022.12.5
+burpsuite - version 2022.12.5
+
 Burp Suite is an integrated platform and graphical tool for performing security testing of web applications, it supports the entire testing         process, from initial mapping and analysis of an application's attack surface, through to finding and exploiting security vulnerabilities.
 
-hydra
-version 9.4
+hydra - version 9.4
+
 Hydra is a pre-installed tool in Kali Linux used to brute-force usernames and passwords to different services such as FTP, ssh, telnet, MS SQL,         etc. Brute force can be used to try different usernames and passwords against a target to identify the correct credentials.
 
-net cat
-version 1.10-47
+net cat - version 1.10-47
+
 The Netcat ( nc ) command is a command-line utility for reading and writing data between two computer networks The communication happens using           either TCP or UDP. The command differs depending on the system ( netcat , nc , ncat , and others).
 	
 
@@ -63,8 +63,9 @@ Walk through:
 
 Footprinting and enumeration:
 
-whoami
-	notes user
+whoami 
+
+notes user
 
 ip address 
 	notes system ip
