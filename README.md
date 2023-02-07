@@ -2,7 +2,7 @@ Project 1.0
 
 Overview
 
-The Mr. Robot vulnerable machine has three keys hidden in different locations. The goal is to find all three. Each key is progressively difficult to find. 
+The Mr. Robot vulnerable machine has three keys hidden in different locations. The goal is to find all three. Each key is progressively difficult to find. /n
 github.com/besoben/project01 has a .docx file which contains screen shots of every step. Please enjoy.
 
 Operating Systems used:
