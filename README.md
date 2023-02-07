@@ -9,6 +9,7 @@ Operating Systems used:
 
 Kali Linux
 •	https://www.kali.org/get-kali/
+
 Mr. Robot:1 VulnHub
 •	https://www.vulnhub.com/entry/mr-robot-1,151/
 
