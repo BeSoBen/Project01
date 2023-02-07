@@ -65,7 +65,7 @@ Footprinting and enumeration:
 
 whoami 
 
-notes user
+		notes user
 
 ip address 
 	notes system ip
