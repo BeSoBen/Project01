@@ -21,26 +21,25 @@ https://www.vulnhub.com/entry/mr-robot-1,151/
 
 Tools/Commands used:
 
-nmap
-
-version 7.93
+nmap - version 7.93
 
 Nmap is a network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing     the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection
 
 
-nikto
-version 2.1.6
+nikto -version 2.1.6
+
 Nikto is a free software command-line vulnerability scanner that scans webservers for dangerous files/CGIs, outdated server software and other           problems. It performs generic and server type specific checks. It also captures and prints any cookies received
 
 gobuster
+
 Gobuster is a tool used to brute-force:  URIs (directories and files) in web sites,  DNS subdomains (with wildcard support), Virtual Host names on       target web servers, Open Amazon S3 buckets, Open Google Cloud buckets, TFTP servers..
 
-dirbuster
-version OWASP DirBuster 1.0-RC1
+dirbuster - version OWASP DirBuster 1.0-RC1
+
 DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers. Often is the case now     of what looks like a web server in a state of default installation is actually not, and has pages and applications hidden within. DirBuster attempts     to find these.
 
-wpscan
-version 3.8.22
+wpscan - version 3.8.22
+
 The WPScan CLI tool is a free, for non-commercial use, black box WordPress security scanner written for security professionals and blog maintainers to   test the security of their sites. The WPScan CLI tool uses a database of 38,431 WordPress vulnerabilities.
 
 metasploit
