@@ -1,23 +1,32 @@
 Project 1.0
 
+
 Overview
 
-The Mr. Robot vulnerable machine has three keys hidden in different locations. The goal is to find all three. Each key is progressively difficult to find. /n
+The Mr. Robot vulnerable machine has three keys hidden in different locations. The goal is to find all three. Each key is progressively difficult to find.
+
 github.com/besoben/project01 has a .docx file which contains screen shots of every step. Please enjoy.
+
 
 Operating Systems used:
 
 Kali Linux
-•	https://www.kali.org/get-kali/
+
+https://www.kali.org/get-kali/
 
 Mr. Robot:1 VulnHub
-•	https://www.vulnhub.com/entry/mr-robot-1,151/
+
+https://www.vulnhub.com/entry/mr-robot-1,151/
+
 
 Tools/Commands used:
 
 nmap
+
 version 7.93
+
 Nmap is a network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing     the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection
+
 
 nikto
 version 2.1.6
