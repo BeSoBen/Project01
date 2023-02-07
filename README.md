@@ -63,24 +63,29 @@ Walk through:
 
 Footprinting and enumeration:
 
-whoami 
+		whoami 
 
-		notes user
+notes user
 
-ip address 
-	notes system ip
+		ip address 
 
-sudo -i
-	super user/ root interactive
+notes system ip
 
-nmap -O [ipadress/range]
-	scans range of ip addresses and lists operating system 
+		sudo -i
 
-arping -h [ipaddress/range]
-	this pings the arp network to map local network
+super user/ root interactive
 
-nikto -h [target-ipaddress]
-	vulnerbility scanner, set host [ip]
+		nmap -O [ipadress/range]
+
+scans range of ip addresses and lists operating system 
+
+		arping -h [ipaddress/range]
+
+this pings the arp network to map local network
+
+		nikto -h [target-ipaddress]
+
+vulnerbility scanner, set host [ip]
 
 gobuster dir -u [target-url/ipaddress] -w [/usr/share/wordlist/dirbuster/directory-list.2.3-small.txt]
 dictionary attack, against url searching for hidden directories
