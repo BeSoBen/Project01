@@ -79,10 +79,6 @@ super user/ root interactive
 
 scans range of ip addresses and lists operating system 
 
-		arping -h [ipaddress/range]
-
-this pings the arp network to map local network
-
 		nikto -h [target-ipaddress]
 
 vulnerbility scanner, set host [ip]
