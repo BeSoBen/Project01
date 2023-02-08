@@ -304,5 +304,5 @@ Root escallation:
 
 		cat key-3-of-3.txt
 
-04787ddef27c3dee1ee161b21670b4e4
+Key 3: 04787ddef27c3dee1ee161b21670b4e4
 
