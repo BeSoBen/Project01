@@ -105,7 +105,7 @@ to see what the first few lines of text were
 
 		wc [fsocity.dic]
 
-word count, it's huge [that's what she said]
+word count, it's huge 
 
 		cat [fsocity.dic] | sort -U  > [sorted_fsocity.dic]  
 
